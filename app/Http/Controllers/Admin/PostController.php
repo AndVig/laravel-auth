@@ -15,7 +15,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        return('lista dei post');
+        $posts=Post::all();
+
+        
+
+        return view('admin.posts.index', compact('posts'));
+        
     }
 
     /**
@@ -39,7 +44,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        dd($post);
     }
 
     /**
