@@ -10,7 +10,7 @@
 
     @include('shared.errors')
 
-    
+
 
     <form action="{{route('admin.projects.update',$project)}}" method="POST">
         @method ('PUT')
@@ -21,9 +21,9 @@
         </div>
         <div class="mb-3">
             <label for="project-content" class="form-label">Contenuto del project</label>
-            <textarea class="form-control" id="project-content" rows="5" name="content" value="{{old('content', $project->content)}}"></textarea>
+            <textarea class="form-control" id="project-content" rows="5" name="content"> {{old('content', $project->content)}}</textarea>
         </div>
-        <button class="btn btn-primary">Crea Project</button>
+        <button class="btn btn-primary">Aggiorna Project</button>
     </form>
     <hr>
     <a href="{{route('admin.projects.index')}}" class="btn btn-info">Torna alla lista dei project</a>
