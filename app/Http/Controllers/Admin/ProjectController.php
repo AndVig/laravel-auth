@@ -76,20 +76,16 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        $data=$request->all();
+        // $data=$request->all();
+        // $project->update($data);
+        // // $project->title=$data['title'];
+        // // $project->content=$data['content'];
+        // // $project->slug=$data['slug'];
+        // $project->save();
+        // return redirect()->route('admin.projects.index')->with('message','Progetto modificato correttamente');
 
-        
-        
-
-        
-        $project->update($data);
-        // $project->title=$data['title'];
-        // $project->content=$data['content'];
-        // $project->slug=$data['slug'];
-
-        $project->save();
-
-        return redirect()->route('admin.projects.index')->with('message','Progetto modificato correttamente');
+        $project->update($request->all());
+        return redirect(route('admin.projects.index'));
     }
 
     /**
