@@ -4,8 +4,8 @@
 <div class="container py-4">
 
     <div class="header-page d-flex justify-content-between align-items-center mb-3">
-        <h1>Lista dei Post</h1>
-        <button class="btn btn-primary">Crea nuovo</button>
+        <h1>Lista dei Progetti</h1>
+        <a as="button" href="{{route('admin.projects.create')}}" class="btn btn-primary">Crea nuovo</a>
     </div>
     <table class="table">
         <thead>
@@ -17,14 +17,14 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($posts as $post)
+            @foreach($projects as $project)
             <tr>
-                <th scope="row">{{$post->id}}</th>
-                <td>{{$post->title}}</td>
-                <td>{{$post->slug}}</td>
+                <th scope="row">{{$project->id}}</th>
+                <td>{{$project->title}}</td>
+                <td>{{$project->slug}}</td>
                 <td>
                     <div class="d-flex gap-2">
-                        <a href="{{ route('admin.posts.show') }}" as="button" class="btn btn-info"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <a href="{{route('admin.projects.show', $project->id)}}" as="button" class="btn btn-info"><i class="fa-solid fa-magnifying-glass"></i></a>
                         <a href="#" as="button" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
                         <a href="#" as="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>  
                     </div>

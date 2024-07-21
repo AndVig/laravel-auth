@@ -2,25 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-
+use App\Models\Project;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePostRequest;
-use App\Http\Requests\UpdatePostRequest;
-use App\Models\Post;
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 
-class PostController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $posts=Post::all();
-
+        $projects = Project::all();
         
+        return view('admin.projects.index', compact('projects'));
 
-        return view('admin.posts.index', compact('posts'));
-        
     }
 
     /**
@@ -28,13 +25,13 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view ('admin.posts.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePostRequest $request)
+    public function store(StoreProjectRequest $request)
     {
         //
     }
@@ -42,20 +39,15 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    // public function show(string $slug)
-    public function show(Post $post)
+    public function show(Project $project)
     {
-        // $post=Post::where('slug',$slug)->first();
-
-
-        return view('admin.post.show', compact('post'));
-        
+        return 'dettaglio';
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit(Project $project)
     {
         //
     }
@@ -63,7 +55,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePostRequest $request, Post $post)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
         //
     }
@@ -71,7 +63,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(Project $project)
     {
         //
     }
