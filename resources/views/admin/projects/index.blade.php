@@ -7,6 +7,13 @@
         <h1>Lista dei Progetti</h1>
         <a as="button" href="{{route('admin.projects.create')}}" class="btn btn-primary">Crea nuovo</a>
     </div>
+
+    @if (session ('message'))
+    <div class="alert alert-success">
+        {{session('message')}}
+    </div>
+    @endif
+
     <table class="table">
         <thead>
             <tr>
@@ -24,8 +31,8 @@
                 <td>{{$project->slug}}</td>
                 <td>
                     <div class="d-flex gap-2">
-                        <a href="{{route('admin.projects.show', $project->id)}}" as="button" class="btn btn-info"><i class="fa-solid fa-magnifying-glass"></i></a>
-                        <a href="#" as="button" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                        <a href="{{route('admin.projects.show', $project->slug)}}" as="button" class="btn btn-info"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <a href="{{route('admin.projects.edit', $project)}}" as="button" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
                         <a href="#" as="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>  
                     </div>
 

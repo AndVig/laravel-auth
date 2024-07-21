@@ -4,7 +4,7 @@
 <div class="container py-4">
 
     <div class="header-page d-flex justify-content-between align-items-center mb-3">
-        <h1>Crea un nuovo project</h1>
+        <h1>Modifica Progetto "{{$project->title}}"</h1>
 
     </div>
 
@@ -12,15 +12,16 @@
 
     
 
-    <form action="{{route('admin.projects.store')}}" method="POST">
+    <form action="{{route('admin.projects.update',$project)}}" method="POST">
+        @method ('PUT')
         @csrf
         <div class="mb-3">
             <label for="project-title" class="form-label">Titolo</label>
-            <input type="text" class="form-control" id="project-title" name="title">
+            <input type="text" class="form-control" id="project-title" name="title" value="{{old('title', $project->title)}}">
         </div>
         <div class="mb-3">
             <label for="project-content" class="form-label">Contenuto del project</label>
-            <textarea class="form-control" id="project-content" rows="5" name="content"></textarea>
+            <textarea class="form-control" id="project-content" rows="5" name="content" value="{{old('content', $project->content)}}"></textarea>
         </div>
         <button class="btn btn-primary">Crea Project</button>
     </form>
