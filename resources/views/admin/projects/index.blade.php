@@ -18,8 +18,8 @@
         <thead>
             <tr>
                 <th scope="col" class="col">#</th>
-                <th scope="col" class="col-7">Last</th>
-                <th scope="col" class="col">Slug</th>
+                <th scope="col" class="col">Last</th>
+                <th scope="col" class="col-7">Descrizione</th>
                 <th scope="col" class="col"></th>
             </tr>
         </thead>
@@ -28,12 +28,17 @@
             <tr>
                 <th scope="row">{{$project->id}}</th>
                 <td>{{$project->title}}</td>
-                <td>{{$project->slug}}</td>
+                <td>{{$project->content}}</td>
                 <td>
                     <div class="d-flex gap-2">
                         <a href="{{route('admin.projects.show', $project->slug)}}" as="button" class="btn btn-info"><i class="fa-solid fa-magnifying-glass"></i></a>
-                        <a href="{{route('admin.projects.edit', $project)}}" as="button" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
-                        <a href="{{route('admin.projects.destroy', $project)}}" as="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>  
+                        <a href="{{route('admin.projects.edit', $project->id)}}" as="button" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                        <!-- <form action="{{route('admin.projects.destroy', $project->id)}}" method="POST" as="button" class="btn btn-danger">@method('DELETE')<i class="fa-solid fa-trash"></i></form>   -->
+                        <form class="d-inline" action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                            </form>
                     </div>
 
                 </td>
